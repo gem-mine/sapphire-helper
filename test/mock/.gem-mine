@@ -1,0 +1,13 @@
+{
+  "id": "1531241661637Q8194504549",
+  "name": "static",
+  "platform": "pc",
+  "ie8": false,
+  "react_version": "16.4.0",
+  "template_version": "0.8.0",
+  "ui": "antd",
+  "ui_version": "3.6.5",
+  "classic_git": "https://github.com/gem-mine/gem-mine-admin.git",
+  "classic_branch": "antd",
+  "classic_version": "0.0.1"
+}
