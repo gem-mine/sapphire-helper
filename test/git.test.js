@@ -7,7 +7,8 @@ describe('获取 git 远程主机信息 - getGitInfo', () => {
   it('获取 gem-mine-helper 远程主机信息', () => {
     const info = getGitInfo(__dirname)
     assert.ok(info.hasOwnProperty('origin'))
-    assert.equal(info.origin, 'git@github.com:gem-mine/gem-mine-helper.git')
+    const arr = info.origin.split('/')
+    assert.equal(arr[arr.length - 1], 'gem-mine-helper.git')
   })
   it('非 git 目录返回空对象', () => {
     const info = getGitInfo(os.tmpdir())

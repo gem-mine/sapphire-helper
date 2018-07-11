@@ -4,7 +4,7 @@ const { exec } = require('child_process')
 
 describe('request 阻塞请求库', () => {
   const port = 8888
-  const url = `http://127.0.0.1:${port}`
+  const url = `http://localhost:${port}`
   let process
   before(() => {
     console.log(`start server: ${url}`)
