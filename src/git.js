@@ -13,10 +13,14 @@ function getGitInfo(root) {
     const data = exec(`git remote`, { cwd: root })
       .toString()
       .trim()
-    data.split('\n').map(function (name) {
-      result[name] = exec(`git remote get-url ${name}`, { cwd: root })
-        .toString()
-        .trim()
+      .split('\n')
+
+    data.forEach(function (name) {
+      if (name) {
+        result[name] = exec(`git remote get-url ${name}`, { cwd: root })
+          .toString()
+          .trim()
+      }
     })
   } catch (e) {}
   return result

@@ -24,7 +24,7 @@ describe('request 阻塞请求库', () => {
       const data = JSON.parse(res.body.toString())
       assert.equal(data.name, 'tom')
       done()
-    }, 100)
+    }, 200)
   })
   it('post 请求', done => {
     setTimeout(function () {
@@ -36,6 +36,6 @@ describe('request 阻塞请求库', () => {
       const data = JSON.parse(res.body.toString())
       assert.equal(data.name, 'jerry')
       done()
-    }, 100)
+    }, 200)
   })
 })
