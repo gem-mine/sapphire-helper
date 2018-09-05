@@ -1,13 +1,13 @@
 const { exec, execWithProcess } = require('./cmd')
-const { SDP_PREFIX, SDP_REGISTRY, TAOBAO_REGISTRY, OFFICIAL_REGISTRY } = require('./constant')
+const { SXP_PREFIX, SXP_REGISTRY, TAOBAO_REGISTRY, OFFICIAL_REGISTRY } = require('./constant')
 
-const REGISTRY = `--registry=${SDP_REGISTRY}`
+const REGISTRY = `--registry=${SXP_REGISTRY}`
 
 /**
- * 执行相关 npm 命令，自动识别是否使用 SDP 的 npm 镜像源
+ * 执行相关 npm 命令，自动识别是否使用 SXP 的 npm 镜像源
  */
 function runNpm(command, options = {}, process = false) {
-  const registry = command.indexOf(SDP_PREFIX) > -1 ? REGISTRY : ''
+  const registry = command.indexOf(SXP_PREFIX) > -1 ? REGISTRY : ''
   if (process) {
     return execWithProcess(`${command} ${registry}`, options)
   } else {

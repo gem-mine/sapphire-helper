@@ -1,7 +1,7 @@
 const assert = require('assert')
 const { runNpm, autoSetRegistry } = require('../src/npm')
 const { exec } = require('../src/cmd')
-const { SDP_PREFIX, OFFICIAL_REGISTRY } = require('../src/constant')
+const { SXP_PREFIX, OFFICIAL_REGISTRY } = require('../src/constant')
 
 describe('检测并自动设置 npm 源，如果使用的是官方源，自动切换为指定源（默认淘宝源） - autoSetRegistry', () => {
   it('源进行自动切换', () => {
@@ -11,7 +11,7 @@ describe('检测并自动设置 npm 源，如果使用的是官方源，自动�
   })
 })
 
-describe('执行相关 npm 命令，自动识别是否使用 SDP 的 npm 镜像源 - npmRun', () => {
+describe('执行相关 npm 命令，自动识别是否使用 SXP 的 npm 镜像源 - npmRun', () => {
   it('获取 react 版本', () => {
     const version = runNpm(`npm show react version`)
     assert.ok(/^(\d+\.){2}\d+$/.test(version))
@@ -20,7 +20,7 @@ describe('执行相关 npm 命令，自动识别是否使用 SDP 的 npm 镜像�
     const start = Date.now()
     const delta = 5000
     try {
-      const version = runNpm(`npm show ${SDP_PREFIX}/fish version`, {
+      const version = runNpm(`npm show ${SXP_PREFIX}/fish version`, {
         timeout: delta
       })
       assert.ok(/^(\d+\.){2}\d+$/.test(version))

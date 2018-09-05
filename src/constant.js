@@ -2,18 +2,20 @@ const n = String.fromCharCode(110)
 const p = String.fromCharCode(112)
 const at = String.fromCharCode(64)
 
-const SDP_PREFIX = `${at}sd${p}.${n}d`
-const SDP_NPM = `registry.npm.sd${p}.${n}d`
-const SDP_REGISTRY = `http://${SDP_NPM}/`
+const SXP = `${at}sd${p}`
+const SXP_PREFIX = `${SXP}.${n}d`
+const SXP_NPM = `registry.npm.sd${p}.${n}d`
+const SXP_REGISTRY = `http://${SXP_NPM}/`
 const TAOBAO_NPM = 'registry.npm.taobao.org'
 const TAOBAO_REGISTRY = `https://${TAOBAO_NPM}/`
 const OFFICIAL_NPM = 'registry.npmjs.org'
 const OFFICIAL_REGISTRY = `https://${OFFICIAL_NPM}/`
 const API = `http://cors.zmei.me`
 
-exports.SDP_PREFIX = SDP_PREFIX
-exports.SDP_REGISTRY = SDP_REGISTRY
-exports.SDP_NPM = SDP_NPM
+exports.SXP = SXP
+exports.SXP_PREFIX = SXP_PREFIX
+exports.SXP_REGISTRY = SXP_REGISTRY
+exports.SXP_NPM = SXP_NPM
 exports.TAOBAO_REGISTRY = TAOBAO_REGISTRY
 exports.TAOBAO_NPM = TAOBAO_NPM
 exports.OFFICIAL_REGISTRY = OFFICIAL_REGISTRY
