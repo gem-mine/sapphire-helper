@@ -1,8 +1,9 @@
 const url = require('url')
 const { exec } = require('./cmd')
-const { PC, MOBILE, IE8, MORDEN, TIMEOUT } = require('./constant')
+const { PC, MOBILE, IE8, MORDEN, TIMEOUT, API } = require('./constant')
 const { getVersionFromGithub } = require('./git')
 const { runNpm } = require('./npm')
+const request = require('./request')
 
 /**
  * 获取项目中使用的 gem-mine-template 的分支
@@ -54,11 +55,12 @@ function checkCliVersion(callback) {
  */
 function checkTemplateVersion(context, callback) {
   const { template_version: localVersion } = context
-  const remoteVersion = getVersionFromGithub({
-    project: 'gem-mine-template',
-    branch: `master-${getTemplateBranch(context)}`
-  })
-  callback({ localVersion, remoteVersion })
+  try {
+    const { version } = request.get(`${API}/native/${getTemplateBranch(context)}/version`)
+    return callback({ localVersion, version })
+  } catch (e) {
+    return callback({ localVersion, undefined })
+  }
 }
 
 /**
