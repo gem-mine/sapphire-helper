@@ -8,10 +8,10 @@ const request = require('./request')
 /**
  * 获取项目中使用的 gem-mine-template 的分支
  */
-function getTemplateBranch(context) {
-  const { platform, ie8, template_branch: templateBranch } = context
-  if (templateBranch) {
-    return templateBranch
+function getNativeBranch(context) {
+  const { platform, ie8, native_branch: nativeBranch } = context
+  if (nativeBranch) {
+    return nativeBranch
   }
   let branch
   if (platform === PC) {
@@ -53,10 +53,10 @@ function checkCliVersion(callback) {
 /**
  * 检测当前项目使用的 gem-mine-template 版本
  */
-function checkTemplateVersion(context, callback) {
-  const { template_version: localVersion } = context
+function checkNativeVersion(context, callback) {
+  const { native_version: localVersion } = context
   try {
-    const { version } = request.get(`${API}/native/${getTemplateBranch(context)}/version`)
+    const { version } = request.get(`${API}/native/${getNativeBranch(context)}/version`)
     return callback({ localVersion, version })
   } catch (e) {
     return callback({ localVersion, undefined })
@@ -106,9 +106,9 @@ function checkClassicVersion(context, callback) {
 }
 
 module.exports = {
-  getTemplateBranch,
+  getNativeBranch,
   checkCliVersion,
-  checkTemplateVersion,
+  checkNativeVersion,
   checkUIVersion,
   checkClassicVersion
 }

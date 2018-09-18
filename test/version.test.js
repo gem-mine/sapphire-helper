@@ -2,8 +2,8 @@ const assert = require('assert')
 const path = require('path')
 const {
   checkCliVersion,
-  getTemplateBranch,
-  checkTemplateVersion,
+  getNativeBranch,
+  checkNativeVersion,
   checkUIVersion,
   checkClassicVersion
 } = require('../src/version')
@@ -46,14 +46,14 @@ describe('检测一系列版本信息', () => {
     })
   })
 
-  it('获取项目中用的 gem-mine-template 分支 - getTemplateBranch', () => {
-    const branch = getTemplateBranch(context)
+  it('获取项目中用的 gem-mine-template 分支 - getNativeBranch', () => {
+    const branch = getNativeBranch(context)
     assert.equal(branch, 'morden')
   })
 
-  it('检测项目中用的 gem-mine-template 版本 - checkTemplateVersion', () => {
+  it('检测项目中用的 gem-mine-template 版本 - checkNativeVersion', () => {
     const key = 'gem-mine-template'
-    checkTemplateVersion(context, ({ localVersion, remoteVersion }) => {
+    checkNativeVersion(context, ({ localVersion, remoteVersion }) => {
       check({ key, localVersion, remoteVersion })
     })
   })
