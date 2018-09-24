@@ -3,7 +3,6 @@ const { getGitInfo, getVersionFromGithub, getGitRepo } = require('./src/git')
 const { readJSON, writeJSON, getIn, setIn } = require('./src/json')
 const { runNpm, autoSetRegistry } = require('./src/npm')
 const { printBox, log } = require('./src/print')
-const request = require('./src/request')
 const { getUIName } = require('./src/sxp')
 const {
   getNativeBranch,
@@ -36,8 +35,6 @@ module.exports = {
   //
   printBox,
   log,
-  //
-  request,
   //
   getUIName,
   //

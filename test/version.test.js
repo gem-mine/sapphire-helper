@@ -11,14 +11,14 @@ const { readJSON } = require('../src/json')
 
 function check({ key, localVersion, remoteVersion }) {
   if (localVersion && remoteVersion) {
-    const reg = /^(\d+\.){2}\d+$/
-    assert.ok(reg.test(localVersion))
-    assert.ok(reg.test(remoteVersion))
     if (localVersion === remoteVersion) {
       console.log(`${key} 本地版本已经是最新 ${localVersion}`)
     } else {
       console.log(`${key} 本地版本 ${localVersion} 和 远程版本 ${remoteVersion} 不一致`)
     }
+    const reg = /^(\d+\.){2}\d+$/
+    assert.ok(reg.test(localVersion))
+    assert.ok(reg.test(remoteVersion))
   } else {
     if (localVersion) {
       console.log(`${key} 本地版本 ${localVersion}`)
@@ -33,7 +33,7 @@ function check({ key, localVersion, remoteVersion }) {
   }
 }
 
-describe('检测一系列版本信息', () => {
+describe('检测 native 相关版本', () => {
   let context
   before(() => {
     context = readJSON(path.join(__dirname, 'mock/.gem-mine'))
@@ -41,9 +41,8 @@ describe('检测一系列版本信息', () => {
 
   it('检测本地 gem-mine 版本 - checkCliVersion', () => {
     const key = 'gem-mine'
-    checkCliVersion(({ localVersion, remoteVersion }) => {
-      check({ key, localVersion, remoteVersion })
-    })
+    const { localVersion, remoteVersion } = checkCliVersion()
+    check({ key, localVersion, remoteVersion })
   })
 
   it('获取项目中用的 gem-mine-template 分支 - getNativeBranch', () => {
@@ -51,28 +50,32 @@ describe('检测一系列版本信息', () => {
     assert.equal(branch, 'morden')
   })
 
-  it('检测项目中用的 gem-mine-template 版本 - checkNativeVersion', () => {
+  it('检测项目中用的 gem-mine-template 版本 - checkNativeVersion', async () => {
     const key = 'gem-mine-template'
-    checkNativeVersion(context, ({ localVersion, remoteVersion }) => {
-      check({ key, localVersion, remoteVersion })
-    })
+    const { localVersion, remoteVersion } = await checkNativeVersion(context)
+    check({ key, localVersion, remoteVersion })
   })
 
   it('检测项目中用的 UI库 版本 - checkUIVersion', () => {
     const key = `ui库 ${context.ui}`
-    checkUIVersion(context, ({ localVersion, remoteVersion }) => {
-      check({ key, localVersion, remoteVersion })
-    })
+    const { localVersion, remoteVersion } = checkUIVersion(context)
+    check({ key, localVersion, remoteVersion })
+  })
+})
+
+describe('检测 classic 相关版本', () => {
+  let context
+  before(() => {
+    context = readJSON(path.join(__dirname, 'mock/.gem-mine-classic'))
   })
 
-  it('检测项目中用的 经典代码骨架 版本 - checkClassicVersion', () => {
+  it('检测项目中用的 经典代码骨架 版本 - checkClassicVersion', async () => {
     const key = `经典代码骨架`
     const { classic_git: git } = context
     if (git) {
       console.log(`使用了经典代码骨架：${git}`)
-      checkClassicVersion(context, ({ localVersion, remoteVersion }) => {
-        check({ key, localVersion, remoteVersion })
-      })
+      const { localVersion, remoteVersion } = await checkClassicVersion(context)
+      check({ key, localVersion, remoteVersion })
     } else {
       console.log(`没有使用 ${key}`)
     }

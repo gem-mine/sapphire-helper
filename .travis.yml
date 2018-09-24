@@ -3,6 +3,6 @@ language: node_js
 node_js:
   - "8"
 install:
-  - npm install mocha boxen chalk command-exists fs-extra sync-request zero-immutable
+  - npm install mocha boxen chalk command-exists fs-extra axios zero-immutable
 script:
   - npm test

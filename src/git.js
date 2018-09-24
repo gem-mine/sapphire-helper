@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs-extra')
-const request = require('./request')
 const { exec } = require('./cmd')
-const { TIMEOUT } = require('./constant')
 
 /**
  * 通过 git remote 获取 git 关联的远程主机信息
@@ -24,20 +22,6 @@ function getGitInfo(root) {
     })
   } catch (e) {}
   return result
-}
-
-/**
- * 通过 package.json 来获取放置在 github 上的当前项目的版本
- */
-function getVersionFromGithub({ username = 'gem-mine', project, branch = 'master' }) {
-  const url = `https://raw.githubusercontent.com/${username}/${project}/${branch}/package.json`
-  try {
-    const res = request.get(url, {
-      timeout: TIMEOUT
-    })
-    const { version } = JSON.parse(res.body.toString())
-    return version
-  } catch (e) {}
 }
 
 /**
@@ -68,5 +52,4 @@ function getGitRepo(root) {
 }
 
 exports.getGitInfo = getGitInfo
-exports.getVersionFromGithub = getVersionFromGithub
 exports.getGitRepo = getGitRepo

@@ -10,7 +10,7 @@ const TAOBAO_NPM = 'registry.npm.taobao.org'
 const TAOBAO_REGISTRY = `https://${TAOBAO_NPM}/`
 const OFFICIAL_NPM = 'registry.npmjs.org'
 const OFFICIAL_REGISTRY = `https://${OFFICIAL_NPM}/`
-const API = `http://cors.zmei.me`
+const API = `http://gm.zmei.me`
 
 exports.SXP = SXP
 exports.SXP_PREFIX = SXP_PREFIX

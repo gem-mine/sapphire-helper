@@ -1,6 +1,6 @@
 {
   "name": "gem-mine-helper",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "tool function for gem-mine",
   "keywords": [
     "gem-mine"
@@ -15,11 +15,11 @@
     "lint": "eslint --ext .js ./test index.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "boxen": "^1.3.0",
     "chalk": "^2.4.1",
     "command-exists": "^1.2.7",
     "fs-extra": "^6.0.1",
-    "sync-request": "^6.0.0",
     "zero-immutable": "^0.1.2"
   },
   "devDependencies": {
