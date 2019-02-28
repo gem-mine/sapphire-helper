@@ -1,9 +1,11 @@
 {
-  "name": "gem-mine-helper",
-  "version": "0.3.1",
-  "description": "tool function for gem-mine",
+  "name": "sapphire-helper",
+  "version": "1.0.0",
+  "description": "tools for sapphire",
   "keywords": [
-    "gem-mine"
+    "gem-mine",
+    "sapphire",
+    "helper"
   ],
   "author": {
     "email": "caolvchong@gmail.com",

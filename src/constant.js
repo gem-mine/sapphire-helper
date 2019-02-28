@@ -23,8 +23,6 @@ exports.OFFICIAL_NPM = OFFICIAL_NPM
 
 exports.PC = 'pc'
 exports.MOBILE = 'mobile'
-exports.MORDEN = 'morden'
-exports.IE8 = 'ie8'
 exports.TIMEOUT = 10000
 
 exports.API = API

@@ -1,5 +1,5 @@
 const { exec } = require('./cmd')
-const { PC, MOBILE, IE8, MORDEN, TIMEOUT, API } = require('./constant')
+const { PC, MOBILE, TIMEOUT, API } = require('./constant')
 const { runNpm } = require('./npm')
 const axios = require('axios')
 
@@ -7,20 +7,11 @@ const axios = require('axios')
  * 获取项目中使用的 gem-mine-template 的分支
  */
 function getNativeBranch(context) {
-  const { platform, ie8, native_branch: nativeBranch } = context
+  const { platform, native_branch: nativeBranch } = context
   if (nativeBranch) {
     return nativeBranch
   }
-  let branch
-  if (platform === PC) {
-    if (ie8) {
-      branch = IE8
-    } else {
-      branch = MORDEN
-    }
-  } else if (platform === MOBILE) {
-    branch = MOBILE
-  }
+  const branch = platform
   return branch
 }
 

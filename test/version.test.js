@@ -47,7 +47,7 @@ describe('检测 native 相关版本', () => {
 
   it('获取项目中用的 gem-mine-template 分支 - getNativeBranch', () => {
     const branch = getNativeBranch(context)
-    assert.equal(branch, 'morden')
+    assert.equal(branch, 'pc')
   })
 
   it('检测项目中用的 gem-mine-template 版本 - checkNativeVersion', async () => {
