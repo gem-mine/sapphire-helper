@@ -1,6 +1,6 @@
 {
   "name": "@gem-mine/sapphire-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tools for sapphire",
   "keywords": [
     "gem-mine",
@@ -13,7 +13,8 @@
   },
   "main": "index.js",
   "files": [
-    "src", "index.js"
+    "src",
+    "index.js"
   ],
   "scripts": {
     "test": "mocha -t 15000",

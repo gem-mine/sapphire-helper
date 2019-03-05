@@ -1,0 +1,7 @@
+{
+  "name": "w4",
+  "platform": "pc",
+  "template_version": "0.8.9",
+  "ui": "antd",
+  "ui_version": "3.8.2"
+}

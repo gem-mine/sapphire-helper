@@ -1,29 +1,26 @@
-const { exec } = require('./cmd')
-const { PC, MOBILE, TIMEOUT, API } = require('./constant')
-const { runNpm } = require('./npm')
 const axios = require('axios')
+const { exec } = require('./cmd')
+const { TIMEOUT, API } = require('./constant')
+const { runNpm } = require('./npm')
 
 /**
- * 获取项目中使用的 gem-mine-template 的分支
+ * 获取项目中使用的 sapphire-template 的分支
  */
-function getNativeBranch(context) {
-  const { platform, native_branch: nativeBranch } = context
-  if (nativeBranch) {
-    return nativeBranch
-  }
+function getTemplateBranch(context) {
+  const { platform } = context
   const branch = platform
   return branch
 }
 
 /**
- * 检测本地 gem-mine 版本
+ * 检测本地 sapphire-template 版本
  */
 function checkCliVersion() {
   let localVersion, remoteVersion
   try {
-    localVersion = exec('gem-mine --version')
+    localVersion = exec('sapphire --version')
     try {
-      remoteVersion = exec(`npm show gem-mine version`, {
+      remoteVersion = exec(`npm show @gem-mine/sapphire version`, {
         timeout: TIMEOUT
       })
     } catch (e) {
@@ -38,13 +35,13 @@ function checkCliVersion() {
 }
 
 /**
- * 检测当前项目使用的 gem-mine-template 版本
+ * 检测当前项目使用的 sapphire-template 版本
  */
-async function checkNativeVersion(context) {
-  const { native_version: localVersion } = context
+async function checkTemplateVersion(context) {
+  const { template_version: localVersion } = context
   let remoteVersion
   try {
-    const { data } = await axios.get(`${API}/native/master-${getNativeBranch(context)}/version`)
+    const { data } = await axios.get(`${API}/template/master-${getTemplateBranch(context)}/version`)
     remoteVersion = data.version
   } catch (e) {}
   return { localVersion, remoteVersion }
@@ -64,26 +61,9 @@ function checkUIVersion(context) {
   return { localVersion, remoteVersion }
 }
 
-/**
- * 检测当前项目使用的经典代码骨架的版本
- */
-async function checkClassicVersion(context) {
-  let { classic_git: git, from_id: projectId, classic_branch: branch, classic_version: localVersion } = context
-  let classicGit, remoteVersion
-  try {
-    if (git) {
-      classicGit = git.replace(/\.git$/, '')
-      const { data } = await axios.get(`${API}/classic/${projectId}/${branch}`)
-      remoteVersion = data.version
-    }
-  } catch (e) {}
-  return { localVersion, remoteVersion, git: classicGit, branch }
-}
-
 module.exports = {
-  getNativeBranch,
+  getTemplateBranch,
   checkCliVersion,
-  checkNativeVersion,
-  checkUIVersion,
-  checkClassicVersion
+  checkTemplateVersion,
+  checkUIVersion
 }

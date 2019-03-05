@@ -1,14 +1,14 @@
 const assert = require('assert')
 const os = require('os')
 const path = require('path')
-const { getGitInfo, getGitRepo } = require('../src/git')
+const { getGitInfo, getGitRepo, getVersionFromGithub } = require('../src/git')
 
 describe('获取 git 远程主机信息 - getGitInfo', () => {
-  it('获取 gem-mine-helper 远程主机信息', () => {
+  it('获取 sapphire-helper 远程主机信息', () => {
     const info = getGitInfo(__dirname)
     assert.ok(info.hasOwnProperty('origin'))
     const arr = info.origin.split('/')
-    assert.equal(arr[arr.length - 1], 'gem-mine-helper.git')
+    assert.equal(arr[arr.length - 1], 'sapphire-helper.git')
   })
   it('非 git 目录返回空对象', () => {
     const info = getGitInfo(os.tmpdir())

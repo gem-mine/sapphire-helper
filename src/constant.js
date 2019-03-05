@@ -2,15 +2,15 @@ const n = String.fromCharCode(110)
 const p = String.fromCharCode(112)
 const at = String.fromCharCode(64)
 
-const SXP = `${at}sd${p}`
-const SXP_PREFIX = `${SXP}.${n}d`
+const SXP = `sd${p}`
+const SXP_PREFIX = `${at}${SXP}.${n}d`
 const SXP_NPM = `registry.npm.sd${p}.${n}d`
 const SXP_REGISTRY = `http://${SXP_NPM}/`
 const TAOBAO_NPM = 'registry.npm.taobao.org'
 const TAOBAO_REGISTRY = `https://${TAOBAO_NPM}/`
 const OFFICIAL_NPM = 'registry.npmjs.org'
 const OFFICIAL_REGISTRY = `https://${OFFICIAL_NPM}/`
-const API = `http://gm.zmei.me`
+const API = `http://gm.zmei.me/sapphire`
 
 exports.SXP = SXP
 exports.SXP_PREFIX = SXP_PREFIX
@@ -26,3 +26,4 @@ exports.MOBILE = 'mobile'
 exports.TIMEOUT = 10000
 
 exports.API = API
+exports.NAME = 'sapphire'
