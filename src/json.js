@@ -1,5 +1,5 @@
 const { readJsonSync, writeJsonSync } = require('fs-extra')
-const { getIn, setIn } = require('zero-immutable')
+const { getIn, setIn } = require('@gem-mine/immutable')
 
 exports.readJSON = readJsonSync
 exports.writeJSON = function (path, object) {
