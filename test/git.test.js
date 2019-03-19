@@ -1,7 +1,7 @@
 const assert = require('assert')
 const os = require('os')
 const path = require('path')
-const { getGitInfo, getGitRepo, getVersionFromGithub } = require('../src/git')
+const { getGitInfo, getGitRepo } = require('../src/git')
 
 describe('获取 git 远程主机信息 - getGitInfo', () => {
   it('获取 sapphire-helper 远程主机信息', () => {
